@@ -144,14 +144,24 @@ void MainWindow::musicPlayPattern()
     {
         //顺序播放
         playerList->setPlaybackMode(QMediaPlaylist::Sequential);
-        ui->pushButton_5->setText (tr("顺序播放"));
+        //ui->pushButton_5->setText (tr("顺序播放"));
+        ui->pushButton_5->setStyleSheet (QString(
+                                             "QPushButton#pushButton_5 \
+                                            {\
+                                                    border-image: url(:/shunxu.png);\
+                                            }"));
 
     }
     else if(model == 1)
     {
         //随机播放
         playerList->setPlaybackMode(QMediaPlaylist::Random);
-        ui->pushButton_5->setText (tr("随机播放"));
+        //ui->pushButton_5->setText (tr("随机播放"));
+        ui->pushButton_5->setStyleSheet (QString(
+                                             "QPushButton#pushButton_5 \
+                                            {\
+                                                    border-image: url(:/suiji.png);\
+                                            }"));
     }
 
     else
@@ -159,7 +169,12 @@ void MainWindow::musicPlayPattern()
         //单曲循环
         model = 2;
         playerList->setPlaybackMode(QMediaPlaylist::CurrentItemInLoop);
-        ui->pushButton_5->setText (tr("列表循环"));
+        //ui->pushButton_5->setText (tr("列表循环"));
+        ui->pushButton_5->setStyleSheet (QString(
+                                             "QPushButton#pushButton_5 \
+                                            {\
+                                                    border-image: url(:/Zombi Mushroom.ico);\
+                                            }"));
     }
     qDebug() << "now" << model;
 }
@@ -176,7 +191,9 @@ void MainWindow::nextMusic()
 {
     //下一首，更新播放时间为0
     moved = 0;
-    playerList->next();
+    playerList->next ();
+    //playerList->setCurrentIndex (playerList->nextIndex ());
+
 }
 
 void MainWindow::volumChange(int vol)
@@ -228,9 +245,36 @@ void MainWindow::on_pushButton_4_clicked()
 void MainWindow::on_pushButton_2_clicked()
 {
     playMusic();
+    if(player->state () == QMediaPlayer::PlayingState)
+    {
+        qDebug() << "playing";
+        ui->pushButton_2->setStyleSheet (QString(
+                                             "QPushButton#pushButton_2:hover     \
+                                             {                                   \
+                                                 border-image: url(:/play1.png); \
+                                             }                                   \
+                                             QPushButton#pushButton_2:!hover     \
+                                             {                                   \
+                                                 border-image: url(:/play2.png); \
+                                             }"));
 
-    //positionChange(100000);
-    //ui->textBrowser->setText (playerList->currentMedia ());
+    }
+    else {
+        qDebug() << "other state;";
+//        ui->pushButton_2->setProperty ("isPlay", "true");
+        ui->pushButton_2->setStyleSheet (QString(
+                                             "QPushButton#pushButton_2:!hover     \
+                                             {                                   \
+                                                 border-image: url(:/play4.png); \
+                                             }"));
+         ui->pushButton_2->setStyleSheet (QString(
+                                              "QPushButton#pushButton_2:hover     \
+                                              {                                   \
+                                                  border-image: url(:/play5.png); \
+                                              }"));
+    }
+
+
 }
 
 void MainWindow::on_pushButton_clicked()
@@ -287,3 +331,8 @@ void MainWindow::on_processHorizontalSlider_sliderMoved(int position)
     qDebug() << position;
     seekChange(position);
 }
+
+//void MainWindow::on_listWidget_currentRowChanged(int currentRow)
+//{
+//    //playerList->setCurrentIndex (currentRow);
+//}

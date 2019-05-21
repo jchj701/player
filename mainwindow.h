@@ -56,7 +56,7 @@ private slots:
 
     void on_processHorizontalSlider_sliderMoved(int position);
 
-//    void on_verticalSlider_sliderMoved(int position);
+//    void on_listWidget_currentRowChanged(int currentRow);
 
 private:
     Ui::MainWindow *ui;

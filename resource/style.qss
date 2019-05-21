@@ -1,66 +1,66 @@
 /*播放按钮*/
 QPushButton#pushButton_2:!hover
 {
-    border-image: url(:/Blue Snail.ico);
+    border-image: url(:/play4.png);
 
 }
 QPushButton#pushButton_2:hover
 {
-    border-image: url(:/Blue Snail.ico);
+    border-image: url(:/play5.png);
 }
 /*上一曲按钮*/
 QPushButton#pushButton:!hover
 {
-        border-image: url(:/Blue Snail.ico);
+        border-image: url(:/last.png);
 }
 QPushButton#pushButton:hover
 {
-        border-image: url(:/Blue Snail.ico);
+        border-image: url(:/last1.png);
 }
 /*下一曲按钮*/
 QPushButton#pushButton_3:hover
 {
-        border-image: url(:/images/next1.png);
+        border-image: url(:/next1.png);
 }
 QPushButton#pushButton_3:!hover
 {
-        border-image: url(:/images/next.png);
+        border-image: url(:/next.png);
 }
 /*静音按钮*/
-QPushButton#muteButton:!hover
+QPushButton#pushButton_6:!hover
 {
-        border-image: url(:/images/sound.png);
+        border-image: url(:/sound.png);
  }
-QPushButton#muteButton:hover
+QPushButton#pushButton_6:hover
 {
-        border-image: url(:/images/sound.png);
+        border-image: url(:/sound.png);
 }
-QPushButton#muteButton:pressed
+QPushButton#pushButton_6:pressed
 {
-        border-image: url(:/images/nosound_light.png);
+        border-image: url(:/sound.png);
 }
 /*播放顺序*/
-QPushButton#playPattern_Btn
+QPushButton#pushButton_5
 {
-        border-image: url(:/images/shunxu.png);
+        border-image: url(:/shunxu.png);
 }
 /*添加*/
-QPushButton#add_Btn:!hover
+QPushButton#pushButton_4:!hover
 {
-        border-image: url(:/images/addmusic.png);
+        border-image: url(:/addmusic.png);
 }
-QPushButton#add_Btn:hover
+QPushButton#pushButton_4:hover
 {
-        border-image: url(:/images/add.png);
+        border-image: url(:/add.png);
 }
 /**/
 QPushButton#Collection_Btn:!hover
 {
-        border-image: url(:/images/heart01.png);
+        border-image: url(:/heart01.png);
 }
 QPushButton#Collection_Btn:hover
 {
-        border-image: url(:/images/heart01.png);
+        border-image: url(:/heart01.png);
 }
 /*搜索*/
 QPushButton#search_Btn:!hover
@@ -91,20 +91,20 @@ QPushButton#search_Btn:pressed
 /*关闭*/
 QPushButton#close_Btn:!hover
 {
-        border-image: url(:/Blue Snail.ico);
+        border-image: url(:/close.png);
 }
 QPushButton#close_Btn:hover
 {
-        border-image: url(:/Blue Snail.ico);
+        border-image: url(:/closew.png);
 }
 /*最小化*/
 QPushButton#min_Btn:!hover
 {
-        border-image: url(:/images/min.png);
+        border-image: url(:/min.png);
 }
 QPushButton#min_Btn:hover
 {
-        border-image: url(:/images/minw.png);
+        border-image: url(:/minw.png);
 }
 /*播放进度条*/
 QSlider::groove:horizontal {
