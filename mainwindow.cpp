@@ -10,7 +10,7 @@
 #include <QMessageBox>
 #include <QFileInfo>
 
-int MainWindow::model = 2;
+int MainWindow::model = 1;
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -24,6 +24,7 @@ MainWindow::MainWindow(QWidget *parent) :
     player = new QMediaPlayer(this);
     playerList = new QMediaPlaylist(this);
 
+    volumChange(30);
     connect(player, SIGNAL(metaDataAvailableChanged(bool)), this, SLOT(showMessage(bool)));
     connect(ui->processHorizontalSlider,SIGNAL(sliderMoved(int)), this,SLOT(seekChange(int)));
     connect(player,SIGNAL(positionChanged(qint64)),this,SLOT(positionChange(qint64)));
