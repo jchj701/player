@@ -137,14 +137,14 @@ void MainWindow::musicPlayPattern()
     {
         //顺序播放
         playerList->setPlaybackMode(QMediaPlaylist::Sequential);
-        ui->pushButton_5->setText ("Sequential");
+        ui->pushButton_5->setText (tr("顺序播放"));
 
     }
     else if(model == 1)
     {
         //随机播放
         playerList->setPlaybackMode(QMediaPlaylist::Random);
-        ui->pushButton_5->setText ("Random");
+        ui->pushButton_5->setText (tr("随机播放"));
     }
 
     else
@@ -152,7 +152,7 @@ void MainWindow::musicPlayPattern()
         //单曲循环
         model = 2;
         playerList->setPlaybackMode(QMediaPlaylist::CurrentItemInLoop);
-        ui->pushButton_5->setText ("CurrentItemInLoop");
+        ui->pushButton_5->setText (tr("列表循环"));
     }
     qDebug() << "now" << model;
 }
@@ -246,25 +246,28 @@ void MainWindow::on_verticalSlider_valueChanged(int value)
 {
     if(!value)
     {
-        ui->pushButton_6->setText ("Mute");
+        ui->pushButton_6->setText (tr("静音"));
     }
     else {
-        ui->pushButton_6->setText ("Unmute");
+        QString i = QString::number (ui->verticalSlider->value ());
+        qDebug() << i;
+        ui->pushButton_6->setText (i);
     }
     volumChange(value);
+
 }
 
 void MainWindow::on_pushButton_6_clicked()
 {
-    if(ui->pushButton_6->text () == "Mute")
+    if(ui->pushButton_6->text () == "静音")
     {
-        ui->pushButton_6->setText ("Unmute");
+        ui->pushButton_6->setText (tr("未静音"));
         ui->verticalSlider->setValue (CurrentValue);
         player->setMuted (false);
     }
     else {
         CurrentValue = ui->verticalSlider->value ();
-        ui->pushButton_6->setText ("Mute");
+        ui->pushButton_6->setText (tr("静音"));
         ui->verticalSlider->setValue (0);
         player->setMuted (true);
     }
@@ -275,5 +278,4 @@ void MainWindow::on_processHorizontalSlider_sliderMoved(int position)
     qDebug() << "sliderMoved";
     qDebug() << position;
     seekChange(position);
-
 }

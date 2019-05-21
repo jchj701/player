@@ -1,2 +1,6 @@
-<!DOCTYPE RCC>
-<RCC version="1.0"/>
+<RCC>
+    <qresource prefix="/pic">
+        <file>Ribbon Pig.ico</file>
+        <file>D:/图片/Camera Roll/海绵宝宝.jpg</file>
+    </qresource>
+</RCC>
