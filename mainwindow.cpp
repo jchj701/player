@@ -332,7 +332,15 @@ void MainWindow::on_processHorizontalSlider_sliderMoved(int position)
     seekChange(position);
 }
 
-//void MainWindow::on_listWidget_currentRowChanged(int currentRow)
-//{
-//    //playerList->setCurrentIndex (currentRow);
-//}
+void MainWindow::on_listWidget_currentRowChanged(int currentRow)
+{
+    //playerList->setCurrentIndex (currentRow);
+    qDebug() << "currentRow = " << currentRow;
+}
+
+void MainWindow::on_listWidget_itemDoubleClicked(QListWidgetItem *item)
+{
+    int row = ui->listWidget->currentRow ();
+    playerList->setCurrentIndex (row);
+}
+

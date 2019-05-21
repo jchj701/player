@@ -56,7 +56,9 @@ private slots:
 
     void on_processHorizontalSlider_sliderMoved(int position);
 
-//    void on_listWidget_currentRowChanged(int currentRow);
+    void on_listWidget_currentRowChanged(int currentRow);
+
+    void on_listWidget_itemDoubleClicked(QListWidgetItem *item);
 
 private:
     Ui::MainWindow *ui;

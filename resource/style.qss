@@ -2,7 +2,6 @@
 QPushButton#pushButton_2:!hover
 {
     border-image: url(:/play4.png);
-
 }
 QPushButton#pushButton_2:hover
 {
