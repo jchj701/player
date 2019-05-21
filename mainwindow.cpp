@@ -10,7 +10,7 @@
 #include <QMessageBox>
 #include <QFileInfo>
 
-int MainWindow::model = 2;
+int MainWindow::model = 1;
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
