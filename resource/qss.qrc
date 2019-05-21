@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Blue Snail.ico</file>
+        <file>Brown Puppy.ico</file>
+        <file>Green Slime.ico</file>
+        <file>Zombi Mushroom.ico</file>
+    </qresource>
+    <qresource prefix="/qss">
+        <file>style.qss</file>
+    </qresource>
+</RCC>

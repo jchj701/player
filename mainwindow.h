@@ -56,6 +56,8 @@ private slots:
 
     void on_processHorizontalSlider_sliderMoved(int position);
 
+//    void on_verticalSlider_sliderMoved(int position);
+
 private:
     Ui::MainWindow *ui;
 //    void init_controls();

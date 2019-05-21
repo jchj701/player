@@ -1,0 +1,244 @@
+/*播放按钮*/
+QPushButton#pushButton_2:!hover
+{
+    border-image: url(:/Blue Snail.ico);
+
+}
+QPushButton#pushButton_2:hover
+{
+    border-image: url(:/Blue Snail.ico);
+}
+/*上一曲按钮*/
+QPushButton#pushButton:!hover
+{
+        border-image: url(:/Blue Snail.ico);
+}
+QPushButton#pushButton:hover
+{
+        border-image: url(:/Blue Snail.ico);
+}
+/*下一曲按钮*/
+QPushButton#pushButton_3:hover
+{
+        border-image: url(:/images/next1.png);
+}
+QPushButton#pushButton_3:!hover
+{
+        border-image: url(:/images/next.png);
+}
+/*静音按钮*/
+QPushButton#muteButton:!hover
+{
+        border-image: url(:/images/sound.png);
+ }
+QPushButton#muteButton:hover
+{
+        border-image: url(:/images/sound.png);
+}
+QPushButton#muteButton:pressed
+{
+        border-image: url(:/images/nosound_light.png);
+}
+/*播放顺序*/
+QPushButton#playPattern_Btn
+{
+        border-image: url(:/images/shunxu.png);
+}
+/*添加*/
+QPushButton#add_Btn:!hover
+{
+        border-image: url(:/images/addmusic.png);
+}
+QPushButton#add_Btn:hover
+{
+        border-image: url(:/images/add.png);
+}
+/**/
+QPushButton#Collection_Btn:!hover
+{
+        border-image: url(:/images/heart01.png);
+}
+QPushButton#Collection_Btn:hover
+{
+        border-image: url(:/images/heart01.png);
+}
+/*搜索*/
+QPushButton#search_Btn:!hover
+{
+    border-color:rgba(0, 0, 0, 50);
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    font-size:12px;
+}
+QPushButton#search_Btn:hover
+{
+    border-color:rgba(0, 0, 0, 50);
+
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 5px;
+    font-size:12px;
+}
+QPushButton#search_Btn:pressed
+{
+    border-color:rgba(0, 255, 0, 100);
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    font-size:12px;
+}
+/*关闭*/
+QPushButton#close_Btn:!hover
+{
+        border-image: url(:/Blue Snail.ico);
+}
+QPushButton#close_Btn:hover
+{
+        border-image: url(:/Blue Snail.ico);
+}
+/*最小化*/
+QPushButton#min_Btn:!hover
+{
+        border-image: url(:/images/min.png);
+}
+QPushButton#min_Btn:hover
+{
+        border-image: url(:/images/minw.png);
+}
+/*播放进度条*/
+QSlider::groove:horizontal {
+    border: 1px solid #4A708B;
+    background: #C0C0C0;
+    height: 5px;
+    border-radius: 1px;
+    padding-left:-1px;
+    padding-right:-1px;
+}
+
+QSlider::sub-page:horizontal {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+        stop:0 #B1B1B1, stop:1 #c4c4c4);
+    background: qlineargradient(x1: 0, y1: 0.2, x2: 1, y2: 1,
+        stop: 0 #5DCCFF, stop: 1 #1874CD);
+    border: 1px solid #4A708B;
+    height: 10px;
+    border-radius: 2px;
+}
+
+QSlider::add-page:horizontal {
+    background: #575757;
+    border: 0px solid #777;
+    height: 10px;
+    border-radius: 2px;
+}
+
+QSlider::handle:horizontal
+{
+    background: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5,
+        stop:0.6 #45ADED, stop:0.778409 rgba(255, 255, 255, 255));
+
+    width: 11px;
+    margin-top: -3px;
+    margin-bottom: -3px;
+    border-radius: 5px;
+}
+
+QSlider::handle:horizontal:hover {
+    background: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0.6 #2A8BDA,
+        stop:0.778409 rgba(255, 255, 255, 255));
+
+    width: 11px;
+    margin-top: -3px;
+    margin-bottom: -3px;
+    border-radius: 5px;
+}
+
+QSlider::sub-page:horizontal:disabled {
+    background: #00009C;
+    border-color: #999;
+}
+
+QSlider::add-page:horizontal:disabled {
+    background: #eee;
+    border-color: #999;
+}
+
+QSlider::handle:horizontal:disabled {
+    background: #eee;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+}
+/*音量进度条*/
+QSlider::groove:vertical {
+    border: 1px solid #4A708B;
+    background: #C0C0C0;
+    width: 5px;
+    border-radius: 1px;
+    padding-left:-1px;
+    padding-right:-1px;
+    padding-top:-1px;
+    padding-bottom:-1px;
+}
+
+QSlider::sub-page:vertical {
+    background: #575757;
+    border: 1px solid #4A708B;
+    border-radius: 2px;
+}
+
+QSlider::add-page:vertical {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+        stop:0 #c4c4c4, stop:1 #B1B1B1);
+    background: qlineargradient(x1: 0, y1: 0.2, x2: 1, y2: 1,
+        stop: 0 #5DCCFF, stop: 1 #1874CD);
+    border: 0px solid #777;
+    width: 10px;
+    border-radius: 2px;
+}
+
+QSlider::handle:vertical
+{
+    background: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0.6 #45ADED,
+      stop:0.778409 rgba(255, 255, 255, 255));
+
+    height: 11px;
+    margin-left: -3px;
+    margin-right: -3px;
+    border-radius: 5px;
+}
+
+QSlider::sub-page:vertical:disabled {
+    background: #00009C;
+    border-color: #999;
+}
+
+QSlider::add-page:vertical:disabled {
+    background: #eee;
+    border-color: #999;
+}
+
+QSlider::handle:vertical:disabled {
+    background: #eee;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+}
+
+/*搜索框*/
+QLineEdit#search_LineEdit:hover{
+    background-color: rgba(0, 0, 0, 0);
+    border-color:rgb(84, 255, 159);
+    border-right-color:rgb(84, 255, 159);
+    border-left-color:rgb(84, 255, 159);
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 4px;
+}
+QLineEdit#search_LineEdit:!hover{
+    background-color: rgba(0, 0, 0, 0);
+    border-color:rgba(0, 0, 0, 50);
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 4px;
+}
+

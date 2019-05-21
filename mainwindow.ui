@@ -6,17 +6,11 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>865</width>
+    <width>871</width>
     <height>549</height>
    </rect>
   </property>
   <property name="minimumSize">
-   <size>
-    <width>865</width>
-    <height>549</height>
-   </size>
-  </property>
-  <property name="maximumSize">
    <size>
     <width>865</width>
     <height>549</height>
@@ -35,7 +29,13 @@
     <normaloff>:/new/prefix1/Ribbon Pig.ico</normaloff>:/new/prefix1/Ribbon Pig.ico</iconset>
   </property>
   <property name="toolTip">
-   <string/>
+   <string comment="123" extracomment="123"/>
+  </property>
+  <property name="toolTipDuration">
+   <number>-1</number>
+  </property>
+  <property name="statusTip">
+   <string comment="234" extracomment="345"/>
   </property>
   <property name="autoFillBackground">
    <bool>false</bool>
@@ -66,6 +66,9 @@
       <height>291</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
+    </property>
    </widget>
    <widget class="QSlider" name="verticalSlider">
     <property name="geometry">
@@ -89,7 +92,7 @@
    <widget class="QPushButton" name="pushButton_6">
     <property name="geometry">
      <rect>
-      <x>740</x>
+      <x>750</x>
       <y>320</y>
       <width>71</width>
       <height>31</height>
@@ -175,7 +178,7 @@
       <x>310</x>
       <y>410</y>
       <width>395</width>
-      <height>30</height>
+      <height>71</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout">
@@ -215,13 +218,32 @@
      </item>
     </layout>
    </widget>
+   <widget class="QDial" name="dial">
+    <property name="geometry">
+     <rect>
+      <x>740</x>
+      <y>390</y>
+      <width>91</width>
+      <height>91</height>
+     </rect>
+    </property>
+   </widget>
+   <zorder>pushButton_4</zorder>
+   <zorder>verticalSlider</zorder>
+   <zorder>pushButton_6</zorder>
+   <zorder>layoutWidget</zorder>
+   <zorder>layoutWidget</zorder>
+   <zorder>layoutWidget</zorder>
+   <zorder>layoutWidget</zorder>
+   <zorder>listWidget</zorder>
+   <zorder>dial</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>865</width>
+     <width>871</width>
      <height>26</height>
     </rect>
    </property>

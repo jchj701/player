@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/new/prefix1">
         <file>Ribbon Pig.ico</file>
+        <file>spbob.jpg</file>
     </qresource>
 </RCC>

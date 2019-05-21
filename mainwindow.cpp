@@ -30,6 +30,13 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(player,SIGNAL(positionChanged(qint64)),this,SLOT(positionChange(qint64)));
     qDebug() << "Music 构造函数";
 
+
+    QFile file(":/qss/style.qss");
+    file.open(QFile::ReadOnly);
+    QString styleSheet = tr(file.readAll());
+    this->setStyleSheet(styleSheet);
+    file.close();
+
 }
 
 MainWindow::~MainWindow()
@@ -255,6 +262,7 @@ void MainWindow::on_verticalSlider_valueChanged(int value)
     }
     volumChange(value);
 
+    ui->dial->setValue (value);
 }
 
 void MainWindow::on_pushButton_6_clicked()
