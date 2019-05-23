@@ -25,10 +25,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        kugou.cpp \
         main.cpp \
         mainwindow.cpp
 
 HEADERS += \
+        kugou.h \
         mainwindow.h
 
 FORMS += \

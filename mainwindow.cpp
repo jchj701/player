@@ -9,8 +9,10 @@
 #include <QMediaMetaData>
 #include <QMessageBox>
 #include <QFileInfo>
+#include "kugou.h"
 
 int MainWindow::model = 2;
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -51,10 +53,7 @@ void MainWindow::addMoremusic()
 {
     QString musicFilePath, musicName;
     QFileInfo info;
-//    list = new QListWidget(this);
-//    message = new QLabel(this);
-//    playerList = new QMediaPlaylist();
-//    player = new QMediaPlayer();
+
     QStringList fileNameList = QFileDialog::getOpenFileNames (this, tr("打开文件"), "", tr("music(*.mp3)"));
     if(!fileNameList.isEmpty ())
     {
@@ -70,12 +69,37 @@ void MainWindow::addMoremusic()
         musicFilePath = fileNameList.at(i);
         info = QFileInfo(musicFilePath);
         musicName = info.fileName ();
-        //list->addItem (musicName);
-        //message->setText (tr("添加成功"));
+
         qDebug() << "加入成功:" << fileNameList.at (i);
 
         ui->listWidget->addItem (musicName);
     }
+
+    playerList->setCurrentIndex (0);
+
+    musicPlayPattern();
+    player -> setPlaylist(playerList);
+
+}
+
+void MainWindow::addMoremusicForNet()
+{
+    QString musicFilePath, musicName;
+    QFileInfo info;
+
+
+
+    add = true;
+
+
+    //本地歌曲逐一加入playerList
+//    for(int i = 0; i < fileNameList.size (); i++)
+//    {
+
+        qDebug() << "加入成功:" << KuGou::musicName1;
+
+        ui->listWidget->addItem (KuGou::musicName1);
+//    }
 
     playerList->setCurrentIndex (0);
 
@@ -204,12 +228,12 @@ void MainWindow::volumChange(int vol)
 
 void MainWindow::positionChange(qint64 position)
 {
-    qDebug() << "in positionChange";
+    //qDebug() << "in positionChange";
     ui->processHorizontalSlider->setMaximum(player->duration() / 1000);//设置滑块的长度范围为音乐长.00度
     ui->processHorizontalSlider->setValue(position / 1000);//如果音乐进度改变，则改变滑块显示位置
     moved = position;
-    qDebug() << "position = " << position;
-    qDebug() << "moved = " << moved;
+    //qDebug() << "position = " << position;
+    //qDebug() << "moved = " << moved;
     QTime moveTime(0,(moved/60000) % 60,(moved / 1000) % 60);
     ui->label_3->setText(moveTime.toString("mm:ss"));
 }
@@ -237,6 +261,22 @@ void MainWindow::showMessage(bool ok)
     }
 }
 
+void MainWindow::listAdd(QString s)
+{
+    qDebug() << "void MainWindow::listAdd(QString s)";
+
+    ui->listWidget->addItem (s);
+}
+void MainWindow::lrcStrAdd(QString s)
+{
+    lrcList.append(s);
+}
+void MainWindow::urlListAdd(QString s)
+{
+    qDebug() << "addMedia = " << s;
+    playerList->addMedia(QUrl(s));
+}
+
 void MainWindow::on_pushButton_4_clicked()
 {
     addMoremusic ();
@@ -249,29 +289,16 @@ void MainWindow::on_pushButton_2_clicked()
     {
         qDebug() << "playing";
         ui->pushButton_2->setStyleSheet (QString(
-                                             "QPushButton#pushButton_2:hover     \
-                                             {                                   \
-                                                 border-image: url(:/play1.png); \
-                                             }                                   \
-                                             QPushButton#pushButton_2:!hover     \
-                                             {                                   \
-                                                 border-image: url(:/play2.png); \
-                                             }"));
+                                             "QPushButton#pushButton_2: hover{border-image: url(:/play1.png);} \
+                                              QPushButton#pushButton_2:!hover{border-image: url(:/play2.png);}"));
 
     }
     else {
         qDebug() << "other state;";
 //        ui->pushButton_2->setProperty ("isPlay", "true");
         ui->pushButton_2->setStyleSheet (QString(
-                                             "QPushButton#pushButton_2:!hover     \
-                                             {                                   \
-                                                 border-image: url(:/play4.png); \
-                                             }"));
-         ui->pushButton_2->setStyleSheet (QString(
-                                              "QPushButton#pushButton_2:hover     \
-                                              {                                   \
-                                                  border-image: url(:/play5.png); \
-                                              }"));
+                                             "QPushButton#pushButton_2:!hover{border-image: url(:/play4.png);}\
+                                              QPushButton#pushButton_2: hover{border-image: url(:/play5.png);}"));
     }
 
 
@@ -344,3 +371,35 @@ void MainWindow::on_listWidget_itemDoubleClicked(QListWidgetItem *item)
     playerList->setCurrentIndex (row);
 }
 
+
+void MainWindow::on_pushButton_7_clicked()
+{
+    KuGouSearch = new KuGou(this);
+
+    connect(KuGouSearch,SIGNAL(nameAdd(QString)),this,SLOT(listAdd(QString)));
+    connect(KuGouSearch,SIGNAL(lrcAdd(QString)),this,SLOT(lrcStrAdd(QString)));
+    connect(KuGouSearch,SIGNAL(mediaAdd(QString)),this,SLOT(urlListAdd(QString)));
+
+    if(player->state () == QMediaPlayer::PlayingState)
+    {
+        on_pushButton_2_clicked ();
+    }
+
+    player->setPlaylist (nullptr);
+    lrcList.clear();
+    lrcStr.clear();
+    lrcTime.clear();
+    playerList->clear();
+    ui->listWidget->clear();
+
+
+    KuGouSearch->search (ui->lineEdit->text ());
+
+    player->setPlaylist (playerList);
+    addMoremusicForNet();
+    if(playerList->currentIndex () >= 0)
+    {
+        qDebug() << "playerList->currentIndex () >= 0";
+        //get_lrcStrTime();
+    }
+}

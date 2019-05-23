@@ -12,6 +12,7 @@
 #include <QMediaPlaylist>
 #include <QTimer>
 #include <QListWidget>
+#include "kugou.h"
 
 namespace Ui {
     class MainWindow;
@@ -60,6 +61,13 @@ private slots:
 
     void on_listWidget_itemDoubleClicked(QListWidgetItem *item);
 
+    void on_pushButton_7_clicked();
+
+    void listAdd(QString s);
+    void lrcStrAdd(QString s);
+    void urlListAdd(QString s);
+    void addMoremusicForNet();
+
 private:
     Ui::MainWindow *ui;
 //    void init_controls();
@@ -90,10 +98,15 @@ private:
     QMediaPlaylist * playerList;
     int CurrentValue;
 
+    KuGou *KuGouSearch;
+    QStringList lrcTime;
+    QStringList lrcStr;
+    QStringList lrcList;
 protected:
 //    void paintEvent(QPaintEvent *event);
 //    void mousePressEvent(QMouseEvent *event);
 //    void mouseMoveEvent(QMouseEvent *event);
 };
+
 
 #endif // MAINWINDOW_H

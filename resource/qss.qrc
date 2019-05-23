@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>Blue Snail.ico</file>
         <file>Brown Puppy.ico</file>
         <file>Green Slime.ico</file>
         <file>Zombi Mushroom.ico</file>
@@ -43,8 +42,6 @@
         <file>traysound1.png</file>
         <file>traysound2.png</file>
         <file>traysoundless.png</file>
-        <file>图标.png</file>
-        <file>图标2.png</file>
     </qresource>
     <qresource prefix="/qss">
         <file>style.qss</file>

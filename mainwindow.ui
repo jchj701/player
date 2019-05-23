@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>865</width>
-    <height>549</height>
+    <width>885</width>
+    <height>603</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -48,7 +48,7 @@
     <property name="geometry">
      <rect>
       <x>490</x>
-      <y>30</y>
+      <y>80</y>
       <width>241</width>
       <height>291</height>
      </rect>
@@ -61,7 +61,7 @@
     <property name="geometry">
      <rect>
       <x>51</x>
-      <y>341</y>
+      <y>391</y>
       <width>671</width>
       <height>24</height>
      </rect>
@@ -87,7 +87,7 @@
     <property name="geometry">
      <rect>
       <x>90</x>
-      <y>30</y>
+      <y>80</y>
       <width>391</width>
       <height>89</height>
      </rect>
@@ -109,7 +109,7 @@
     <property name="geometry">
      <rect>
       <x>92</x>
-      <y>140</y>
+      <y>190</y>
       <width>391</width>
       <height>181</height>
      </rect>
@@ -131,7 +131,7 @@
     <property name="geometry">
      <rect>
       <x>740</x>
-      <y>370</y>
+      <y>420</y>
       <width>91</width>
       <height>91</height>
      </rect>
@@ -141,7 +141,7 @@
     <property name="geometry">
      <rect>
       <x>150</x>
-      <y>380</y>
+      <y>430</y>
       <width>521</width>
       <height>91</height>
      </rect>
@@ -191,7 +191,7 @@
     <property name="geometry">
      <rect>
       <x>760</x>
-      <y>80</y>
+      <y>130</y>
       <width>61</width>
       <height>281</height>
      </rect>
@@ -216,21 +216,56 @@
      </property>
     </widget>
    </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>40</y>
+      <width>741</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>网络搜索</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit">
+       <property name="text">
+        <string>林俊杰</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_7">
+       <property name="text">
+        <string>酷狗一下</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <zorder>splitter_2</zorder>
    <zorder>splitter</zorder>
-   <zorder>verticalSlider</zorder>
-   <zorder>pushButton_6</zorder>
    <zorder>layoutWidget</zorder>
    <zorder>layoutWidget</zorder>
    <zorder>layoutWidget</zorder>
    <zorder>listWidget</zorder>
    <zorder>dial</zorder>
+   <zorder>pushButton_7</zorder>
+   <zorder>lineEdit</zorder>
+   <zorder>label_4</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>865</width>
+     <width>885</width>
      <height>26</height>
     </rect>
    </property>
