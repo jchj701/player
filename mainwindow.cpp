@@ -85,21 +85,14 @@ void MainWindow::addMoremusic()
 void MainWindow::addMoremusicForNet()
 {
     QString musicFilePath, musicName;
-    QFileInfo info;
-
-
-
     add = true;
 
-
-    //本地歌曲逐一加入playerList
-//    for(int i = 0; i < fileNameList.size (); i++)
-//    {
-
+    if(KuGou::musicName1 != "")
+    {
         qDebug() << "加入成功:" << KuGou::musicName1;
 
         ui->listWidget->addItem (KuGou::musicName1);
-//    }
+    }
 
     playerList->setCurrentIndex (0);
 
@@ -169,23 +162,14 @@ void MainWindow::musicPlayPattern()
         //顺序播放
         playerList->setPlaybackMode(QMediaPlaylist::Sequential);
         //ui->pushButton_5->setText (tr("顺序播放"));
-        ui->pushButton_5->setStyleSheet (QString(
-                                             "QPushButton#pushButton_5 \
-                                            {\
-                                                    border-image: url(:/shunxu.png);\
-                                            }"));
-
+        ui->pushButton_5->setStyleSheet (QString("QPushButton#pushButton_5{border-image: url(:/shunxu.png);}"));
     }
     else if(model == 1)
     {
         //随机播放
         playerList->setPlaybackMode(QMediaPlaylist::Random);
         //ui->pushButton_5->setText (tr("随机播放"));
-        ui->pushButton_5->setStyleSheet (QString(
-                                             "QPushButton#pushButton_5 \
-                                            {\
-                                                    border-image: url(:/suiji.png);\
-                                            }"));
+        ui->pushButton_5->setStyleSheet (QString("QPushButton#pushButton_5{border-image: url(:/suiji.png);}"));
     }
 
     else
@@ -194,13 +178,9 @@ void MainWindow::musicPlayPattern()
         model = 2;
         playerList->setPlaybackMode(QMediaPlaylist::CurrentItemInLoop);
         //ui->pushButton_5->setText (tr("列表循环"));
-        ui->pushButton_5->setStyleSheet (QString(
-                                             "QPushButton#pushButton_5 \
-                                            {\
-                                                    border-image: url(:/Zombi Mushroom.ico);\
-                                            }"));
+        ui->pushButton_5->setStyleSheet (QString("QPushButton#pushButton_5{border-image: url(:/Zombi Mushroom.ico);}"));
     }
-    qDebug() << "now" << model;
+    qDebug() << "now play model = " << model;
 }
 
 void MainWindow::preMusic()
@@ -266,6 +246,8 @@ void MainWindow::listAdd(QString s)
     qDebug() << "void MainWindow::listAdd(QString s)";
 
     ui->listWidget->addItem (s);
+    //showMessage(true);
+    emit SIGNAL(metaDataAvailableChanged(true));
 }
 void MainWindow::lrcStrAdd(QString s)
 {
@@ -285,23 +267,24 @@ void MainWindow::on_pushButton_4_clicked()
 void MainWindow::on_pushButton_2_clicked()
 {
     playMusic();
+    playOrPauseButtonChange();
+}
+
+void MainWindow::playOrPauseButtonChange()
+{
     if(player->state () == QMediaPlayer::PlayingState)
     {
         qDebug() << "playing";
-        ui->pushButton_2->setStyleSheet (QString(
-                                             "QPushButton#pushButton_2: hover{border-image: url(:/play1.png);} \
-                                              QPushButton#pushButton_2:!hover{border-image: url(:/play2.png);}"));
+        ui->pushButton_2->setStyleSheet (QString("QPushButton#pushButton_2:hover{border-image:url(:/play1.png);} \
+                                              QPushButton#pushButton_2:!hover{border-image:url(:/play2.png);}"));
 
     }
     else {
-        qDebug() << "other state;";
+        qDebug() << "not playing, in other state;";
 //        ui->pushButton_2->setProperty ("isPlay", "true");
-        ui->pushButton_2->setStyleSheet (QString(
-                                             "QPushButton#pushButton_2:!hover{border-image: url(:/play4.png);}\
-                                              QPushButton#pushButton_2: hover{border-image: url(:/play5.png);}"));
+        ui->pushButton_2->setStyleSheet (QString("QPushButton#pushButton_2:!hover{border-image:url(:/play4.png);}\
+                                              QPushButton#pushButton_2:hover{border-image:url(:/play5.png);}"));
     }
-
-
 }
 
 void MainWindow::on_pushButton_clicked()
@@ -328,7 +311,7 @@ void MainWindow::on_verticalSlider_valueChanged(int value)
     }
     else {
         QString i = QString::number (ui->verticalSlider->value ());
-        qDebug() << i;
+        qDebug() << "volume = " <<i;
         ui->pushButton_6->setText (i);
     }
     volumChange(value);
@@ -354,8 +337,7 @@ void MainWindow::on_pushButton_6_clicked()
 
 void MainWindow::on_processHorizontalSlider_sliderMoved(int position)
 {
-    qDebug() << "sliderMoved";
-    qDebug() << position;
+    qDebug() << "sliderMoved = " << position;
     seekChange(position);
 }
 
@@ -369,6 +351,8 @@ void MainWindow::on_listWidget_itemDoubleClicked(QListWidgetItem *item)
 {
     int row = ui->listWidget->currentRow ();
     playerList->setCurrentIndex (row);
+    player->play ();
+    playOrPauseButtonChange();
 }
 
 
@@ -396,10 +380,13 @@ void MainWindow::on_pushButton_7_clicked()
     KuGouSearch->search (ui->lineEdit->text ());
 
     player->setPlaylist (playerList);
-    addMoremusicForNet();
+    add =true;
+
+    //addMoremusicForNet();
     if(playerList->currentIndex () >= 0)
     {
         qDebug() << "playerList->currentIndex () >= 0";
         //get_lrcStrTime();
     }
 }
+

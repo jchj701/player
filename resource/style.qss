@@ -41,7 +41,7 @@ QPushButton#pushButton_6:pressed
 /*播放顺序*/
 QPushButton#pushButton_5
 {
-        border-image: url(:/shunxu.png);
+        border-image: url(:/Zombi Mushroom.ico);
 }
 /*添加*/
 QPushButton#pushButton_4:!hover

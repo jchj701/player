@@ -68,6 +68,8 @@ private slots:
     void urlListAdd(QString s);
     void addMoremusicForNet();
 
+    //void on_listWidget_currentItemChanged(QListWidgetItem *current, QListWidgetItem *previous);
+
 private:
     Ui::MainWindow *ui;
 //    void init_controls();
@@ -102,6 +104,7 @@ private:
     QStringList lrcTime;
     QStringList lrcStr;
     QStringList lrcList;
+    void playOrPauseButtonChange();
 protected:
 //    void paintEvent(QPaintEvent *event);
 //    void mousePressEvent(QMouseEvent *event);
