@@ -61,6 +61,7 @@ void KuGou::replyFinished(QNetworkReply *reply)        //发送搜索请求完�
         qDebug()<<"处理错误";
     }
 }
+
 void KuGou::replyFinished2(QNetworkReply *reply)       //发送搜索请求完成，接受到信息，然后进行解析         通过歌曲ID搜索
 {
     //获取响应的信息，状态码为200表示正常
@@ -186,17 +187,16 @@ void KuGou::parseJson_getplay_url(QString json)        //解析得到歌曲
     QJsonDocument parse_doucment = QJsonDocument::fromJson(byte_array.append(json), &json_error);
     if(json_error.error == QJsonParseError::NoError)
     {
-
         if(parse_doucment.isObject())
         {
             QJsonObject rootObj = parse_doucment.object();
             if(rootObj.contains("data"))
             {
-                qDebug() << "111";
+//                qDebug() << "111";
                 QJsonValue valuedata = rootObj.value("data");
                 if(valuedata.isObject ())
                 {
-                    qDebug() << "222";
+//                    qDebug() << "222";
                     QJsonObject valuedataObject = valuedata.toObject();
                     QString play_urlStr("");
                     if(valuedataObject.contains("play_url"))
@@ -210,12 +210,13 @@ void KuGou::parseJson_getplay_url(QString json)        //解析得到歌曲
                             {
                                 emit mediaAdd(play_urlStr);
                             }
+                            else
+                            {
+                                qDebug() << "版权歌曲，无url";
+                            }
                         }
                     }
-                    else
-                    {
-                        qDebug() << "版权歌曲，无url";
-                    }
+
 
                     if(valuedataObject.contains("audio_name"))
                     {
@@ -229,7 +230,6 @@ void KuGou::parseJson_getplay_url(QString json)        //解析得到歌曲
                                 qDebug() << "KuGou::musicName1 = " << KuGou::musicName1;
                                 emit nameAdd(play_name);
                             }
-
                         }
                     }
                     if(valuedataObject.contains("lyrics"))                                  //lrc
@@ -238,18 +238,14 @@ void KuGou::parseJson_getplay_url(QString json)        //解析得到歌曲
                         if(play_url_value.isString())
                         {
                             QString play_lrcStr = play_url_value.toString();
-                            if(play_urlStr!="")
+                            if(play_urlStr!="" && play_lrcStr != "")
                             {
-                                if(play_lrcStr != "")
-                                {
-                                    emit lrcAdd(play_lrcStr);
-                                }
-                                else
-                                {
-                                    emit lrcAdd("没有歌词");
-                                }
+                                emit lrcAdd(play_lrcStr);
                             }
-
+                            else
+                            {
+                                emit lrcAdd("没有歌词");
+                            }
                         }
                     }
                 }
@@ -258,6 +254,7 @@ void KuGou::parseJson_getplay_url(QString json)        //解析得到歌曲
     }
 #endif
 }
+
 void KuGou::search(QString str)
 {
     //发送歌曲搜索请求

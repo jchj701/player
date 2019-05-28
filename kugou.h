@@ -28,6 +28,7 @@ signals:
     void nameAdd(QString name);
     void mediaAdd(QString urlStr);
     void lrcAdd(QString lrcStr);
+    void metaDataAvailableChanged_1(bool available);
 public slots:
     void replyFinished(QNetworkReply *reply);
     void replyFinished2(QNetworkReply *reply);

@@ -38,6 +38,8 @@ private slots:
     void volumChange(int);
     void positionChange(qint64 position);
     void showMessage(bool);
+    void showMessage_1(bool);
+
     void seekChange(int position);
     void posChange();
 //    void clearMessage();
@@ -101,6 +103,7 @@ private:
     int CurrentValue;
 
     KuGou *KuGouSearch;
+    QStringList nameList;
     QStringList lrcTime;
     QStringList lrcStr;
     QStringList lrcList;

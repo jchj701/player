@@ -241,13 +241,29 @@ void MainWindow::showMessage(bool ok)
     }
 }
 
+void MainWindow::showMessage_1(bool ok)
+{
+    if(ok)
+    {
+        qDebug() << "showMessage_1";
+        QString name=  KuGou::musicName1;
+
+        ui->textBrowser->setText("正在播放："+name);
+
+        QTime  displayTime(0,(player -> duration() / 60000) % 60,
+                           (player ->duration() / 1000) % 60);
+        ui->label_3->setText(displayTime.toString("mm:ss"));
+    }
+}
+
 void MainWindow::listAdd(QString s)
 {
     qDebug() << "void MainWindow::listAdd(QString s)";
 
     ui->listWidget->addItem (s);
+    nameList.append (s);
     //showMessage(true);
-    emit SIGNAL(metaDataAvailableChanged(true));
+    //emit SIGNAL(metaDataAvailableChanged_1(true));
 }
 void MainWindow::lrcStrAdd(QString s)
 {
@@ -285,6 +301,8 @@ void MainWindow::playOrPauseButtonChange()
         ui->pushButton_2->setStyleSheet (QString("QPushButton#pushButton_2:!hover{border-image:url(:/play4.png);}\
                                               QPushButton#pushButton_2:hover{border-image:url(:/play5.png);}"));
     }
+
+    ui->textBrowser_2->setText (lrcList.at (ui->listWidget->currentRow ()));
 }
 
 void MainWindow::on_pushButton_clicked()
@@ -353,6 +371,8 @@ void MainWindow::on_listWidget_itemDoubleClicked(QListWidgetItem *item)
     playerList->setCurrentIndex (row);
     player->play ();
     playOrPauseButtonChange();
+    qDebug() << "emit meta_1" ;
+    ui->textBrowser->setText (nameList.at(ui->listWidget->currentRow ()));
 }
 
 
@@ -363,6 +383,8 @@ void MainWindow::on_pushButton_7_clicked()
     connect(KuGouSearch,SIGNAL(nameAdd(QString)),this,SLOT(listAdd(QString)));
     connect(KuGouSearch,SIGNAL(lrcAdd(QString)),this,SLOT(lrcStrAdd(QString)));
     connect(KuGouSearch,SIGNAL(mediaAdd(QString)),this,SLOT(urlListAdd(QString)));
+    connect(KuGouSearch,SIGNAL(metaDataAvailableChanged_1(bool)), this, SLOT(showMessage_1(bool)));
+
 
     if(player->state () == QMediaPlayer::PlayingState)
     {
